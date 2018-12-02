@@ -117,11 +117,11 @@ func getSchedule() {
 	  	i++
 	  })
 	})
+	time.Sleep(5 * time.Second)
 }
 
 func main() {
 	port := os.Getenv("PORT")
-	getSchedule()
   r := mux.NewRouter()
   r.HandleFunc("/api/UoAizu/room/{id}", roomStatus).Methods("GET")
   routerWithCORS := handlers.CORS(
@@ -130,10 +130,10 @@ func main() {
                 handlers.AllowedHeaders([]string{"Content-Type", "application/json", ""}),
     )(r)
   log.Fatal(http.ListenAndServe(":"+port, routerWithCORS))
-	fmt.Println(getRoomStatus(47))
 }
 
 func roomStatus(w http.ResponseWriter, r *http.Request) {
+	getSchedule()
 	w.Header().Set("Content-Type", "application/json")
 	i := mux.Vars(r)
 	id, _ := strconv.Atoi(i["id"]) 
