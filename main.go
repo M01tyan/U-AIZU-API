@@ -60,6 +60,7 @@ func getSchedule() {
       log.Fatalf("Failed to start driver:%v", err)
   }
   defer driver.Stop()
+  
 
   page, err := driver.NewPage(agouti.Browser("chrome"))
   if err != nil {
