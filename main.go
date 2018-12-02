@@ -118,6 +118,7 @@ func getSchedule() {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	getSchedule()
   r := mux.NewRouter()
   r.HandleFunc("/api/UoAizu/room/{id}", roomStatus).Methods("GET")
@@ -126,7 +127,7 @@ func main() {
         handlers.AllowedOrigins([]string{"*"}),
                 handlers.AllowedHeaders([]string{"Content-Type", "application/json", ""}),
     )(r)
-  log.Fatal(http.ListenAndServe(":8000", routerWithCORS))
+  log.Fatal(http.ListenAndServe(port, routerWithCORS))
 	fmt.Println(getRoomStatus(47))
 }
 
