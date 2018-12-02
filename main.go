@@ -60,7 +60,7 @@ func getSchedule() {
       log.Fatalf("Failed to start driver:%v", err)
   }
   defer driver.Stop()
-  
+
 
   page, err := driver.NewPage(agouti.Browser("chrome"))
   if err != nil {
@@ -129,7 +129,7 @@ func main() {
         handlers.AllowedOrigins([]string{"*"}),
                 handlers.AllowedHeaders([]string{"Content-Type", "application/json", ""}),
     )(r)
-  log.Fatal(http.ListenAndServe(port, routerWithCORS))
+  log.Fatal(http.ListenAndServe(":"+port, routerWithCORS))
 	fmt.Println(getRoomStatus(47))
 }
 
