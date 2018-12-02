@@ -116,7 +116,6 @@ func getSchedule() {
 	  	i++
 	  })
 	})
-	time.Sleep(5 * time.Second)
 }
 
 func main() {
