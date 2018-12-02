@@ -23,8 +23,10 @@
 #   non-go = false
 #   go-tests = true
 #   unused-packages = true
-metadata.heroku['root-package']
-  go list -e .
+
+[metadata.heroku]
+  root-package = "UoAizu"
+  install = [./...]
 
 
 [[constraint]]
